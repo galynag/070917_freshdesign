@@ -11,3 +11,6 @@ nav .brand-logo {
     margin: 1em auto;
     float: none;
 }
+#btn-submit, .btn {
+    margin: 2em;
+}

@@ -19,7 +19,7 @@
     <main class="center">
         <div class="row">
             <div class="progress col m6 s 12">
-                <div class="determinate" style="width: 70%"></div>
+                <div class="determinate" style="width: 10%"></div>
             </div>
         </div>
         <div class="row">
@@ -32,6 +32,7 @@
                     </div>
                     <p class="range-field col m6 s12">
                         <input type="range" id="range-sum" min="1" max="10000"/>
+                        <label for="range-sum">Установка значения суммы при помощи ползунка</label>
                     </p>
                 </div>
                 <div class="row">
@@ -42,14 +43,17 @@
                     </div>
                     <p class="range-field col m6 s12">
                         <input type="range" id="range-deadline" min="1" max="12"/>
+                        <label for="range-deadline">Установка значения срока при помощи ползунка</label>
                     </p>
                 </div>
-                <a class="btn-floating" href="step2.html"><i class="material-icons">navigate_next</i></a>
+                <a class="btn-floating " disabled><i class="material-icons">navigate_before</i></a>
+                <a id="btn1-next" class="btn-floating" href="step2.html"><i class="material-icons">navigate_next</i></a>
             </form>
 
         </div>
     </main>
-    <script src="js.js"></script>
+    <script src="https://js.cx/babel-core/browser.min.js"></script>
+    <script  type="text/babel" src="main.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
 
 </body>
