@@ -13,89 +13,42 @@
     <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
 </head>
 <body>
-    <div class="navbar-fixed">
-        <nav>
-            <div class="nav-wrapper">
-                <a href="#!" class="brand-logo">Form</a>
-                <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
-                <ul class="right hide-on-med-and-down">
-                    <li><a href="index.html">Шаг1</a></li>
-                    <li><a href="step2.html">Шаг2</a></li>
-                    <li><a href="step3.html">Шаг3</a></li>
-                </ul>
-                <ul class="side-nav" id="mobile-demo">
-                    <li><a href="index.html">Шаг1</a></li>
-                    <li><a href="step2.html">Шаг2</a></li>
-                    <li><a href="step3.html">Шаг3</a></li>
-                </ul>
+    <header class="navbar-fixed">
+        <nav></nav>
+    </header>
+    <main class="center">
+        <div class="row">
+            <div class="progress col m6 s 12">
+                <div class="determinate" style="width: 70%"></div>
             </div>
-        </nav>
-    </div>
-
-    <div class="progress">
-        <div class="determinate" style="width: 70%"></div>
-    </div>
-
-    <div class="row center">
-        <form class="col m6 s12">
-            <p class="range-field">
-                <input type="range" id="test4" min="1" max="10000" />
-            </p>
-            <p class="range-field">
-                <input type="range" id="test5" min="1" max="12" />
-            </p>
-        </form>
-    </div>
-
-<div class="row">
-        <form class="col s12">
-            <div class="row">
-                <div class="input-field col s6">
-                    <i class="material-icons prefix">account_circle</i>
-                    <input id="icon_prefix" type="text" class="validate">
-                    <label for="icon_prefix">Имя</label>
+        </div>
+        <div class="row">
+            <form  class="col s12">
+                <div class="row">
+                    <div class="input-field col m6 s12">
+                        <i class="material-icons prefix">monetization_on</i>
+                        <input type="number" id="sum" autofocus required min="1" max="10000">
+                        <label class="active" for="sum">Сумма</label>
+                    </div>
+                    <p class="range-field col m6 s12">
+                        <input type="range" id="range-sum" min="1" max="10000"/>
+                    </p>
                 </div>
-            </div>
-        </form>
-    </div>
+                <div class="row">
+                    <div class="input-field col s6">
+                        <i class="material-icons prefix">new_releases</i>
+                        <input type="number" id="deadline" required min="1" max="12" value="0">
+                        <label class="active" for="deadline">Срок</label>
+                    </div>
+                    <p class="range-field col m6 s12">
+                        <input type="range" id="range-deadline" min="1" max="12"/>
+                    </p>
+                </div>
+                <a class="btn-floating" href="step2.html"><i class="material-icons">navigate_next</i></a>
+            </form>
 
-
-    <div class="row">
-        <form  class="col s12">
-            <p>Сумма
-                <input type="number" name="sum" autofocus required min="1" max="10000">
-            </p>
-            <p>Срок
-                <input type="number" name="deadline" required min="1" max="12">
-            </p>
-        </form>
-        <form>
-            <p>ИНН
-                <input id="inn" type="text" pattern="[0-9]{10}" required name="inn" data-length="10" maxlength="10">
-            </p>
-            <p>Фамилия
-                <input type="text" required name="surname" maxlength="10">
-            </p>
-            <p>Имя
-                <input type="text" required name="name" maxlength="10">
-            </p>
-            <p>Город:
-                <input class="ff_elem" type="text" name="ff_nm_from[]" value="" id="f_elem_city">
-            </p>
-        </form>
-    </div>
-    <input type="button" value="test inn" onclick="calc()">
-    <a class="btn-floating "><i class="material-icons">navigate_before</i></a>
-    <a class="btn-floating disabled"><i class="material-icons">navigate_next</i></a>
-
-    <script>
-        function calc() {
-            var bDay = new Date(1900,0,0);
-            var today = new Date();
-            bDay.setDate(bDay.getDate() + 28405);
-            ((today.getMonth - bDay.getMonth > 0 && today.getFullYear()-bDay.getFullYear() >= 21) || (today.getFullYear()-bDay.getFullYear() >= 22)) ? alert('>21') : alert('<21')
-        }
-    </script>
+        </div>
+    </main>
     <script src="js.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
 

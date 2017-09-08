@@ -16,6 +16,57 @@
     <title>Title</title>
 </head>
 <body>
+    <header class="navbar-fixed">
+        <nav></nav>
+    </header>
+    <main class="center">
+        <div class="row">
+            <form  class="col s12">
+                <div class="row">
+                    <div class="input-field col s6">
+                        <i class="material-icons prefix">offline_pin</i>
+                        <input id="inn" type="text" autofocus pattern="[0-9]{10}" required data-length="10" maxlength="10">
+                        <label class="active" for="inn">ИНН</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s6">
+                        <i class="material-icons prefix">account_circle</i>
+                        <input input type="text" required id="surname" data-length="100" maxlength="100" value=" ">
+                        <label class="active" for="inn">Фамилия</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s6">
+                        <i class="material-icons prefix">account_circle</i>
+                        <input input type="text" required id="name" data-length="100" maxlength="100" value=" ">
+                        <label class="active" for="inn">Имя</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s6">
+                        <i class="material-icons prefix">location_city</i>
+                        <input class="ff_elem" type="text" name="ff_nm_from[]" data-length="100" value=" " id="f_elem_city" maxlength="100">
+                        <label class="active" for="inn">Город</label>
+                    </div>
+                </div>
+            </form>
+            <a class="btn-floating " href="index.html"><i class="material-icons">navigate_before</i></a>
+            <a class="btn-floating disabled" href="step3.html"><i class="material-icons">navigate_next</i></a>
+        </div>
+    </main>
+    <input type="button" value="test inn" onclick="calc()">
 
+
+    <script>
+        function calc() {
+            var bDay = new Date(1900,0,0);
+            var today = new Date();
+            bDay.setDate(bDay.getDate() + 28405);
+            ((today.getMonth - bDay.getMonth > 0 && today.getFullYear()-bDay.getFullYear() >= 21) || (today.getFullYear()-bDay.getFullYear() >= 22)) ? alert('>21') : alert('<21')
+        }
+    </script>
+    <script src="js.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
 </body>
 </html>

@@ -2,11 +2,47 @@
  * Created by Galina on 07.09.2017.
  */
 $(document).ready(function () {
-    //функционал автозаполнения
-    $("#f_elem_city").autocomplete({
+    let testData = {};
+    $('nav').load('templates/nav.html');
+    $.getJSON(
+      'testdata.json',
+        function (data) {
+            testData = data;
+            $('#sum').val(testData.sum);
+            $('#deadline').val(testData.deadline);
+            $('#range-sum').val(testData.sum);
+            $('#range-deadline').val(testData.deadline);
+            $('#inn').val(testData.inn);
+            $('#surname').val(testData.surname);
+            $('#name').val(testData.name);
+            $('#f_elem_city').val(testData.city);
+        }
+    );
+    //проверка данных при потере фокуса с поля (blur())
+    $('#sum').blur(function (eventObject) {
+        if (eventObject.delegateTarget.value >= 1 && eventObject.delegateTarget.value <= 10000) {
+            return true;
+        } else {
+            $('#sum').val("");
+            $('#sum').attr({"placeholder":"Нужно указать число от 1 до 10 000"});
+            return false;
+        }
+    });
+    $('#deadline').blur(function (eventObject) {
+        if (eventObject.delegateTarget.value >= 1 && eventObject.delegateTarget.value <= 12) {
+            alert('right');
+            return true;
+        } else {
+            $('#deadline').val("");
+            $('#deadline').attr({"placeholder":"Нужно указать число от 1 до 12"});
+            return false;
+        }
+    });
+    //автозаполнение для поля Город
+    $('#f_elem_city').autocomplete({
         source: function (request, response) {
             $.getJSON(
-                "http://gd.geobytes.com/AutoCompleteCity?callback=?&q="+request.term,
+                'http://gd.geobytes.com/AutoCompleteCity?callback=?&q='+request.term,
                 function (data) {
                     response(data);
                 }
@@ -16,20 +52,19 @@ $(document).ready(function () {
         // limit: 20, //максимальное кол-во городов для выбора, которые будут выведены за раз
         select: function (event, ui) {
             let selectedObj = ui.item;
-            $("#f_elem_city").val(selectedObj.value);
+            $('#f_elem_city').val(selectedObj.value);
             return false;
         },
         open: function () {
-            $(this).removeClass("ui-corner-all").addClass("ui-corner-top");
+            $(this).removeClass('ui-corner-all').addClass('ui-corner-top');
         },
         close: function () {
-            $(this).removeClass("ui-corner-top").addClass("ui-corner-all");
+            $(this).removeClass('ui-corner-top').addClass('ui-corner-all');
         }
     });
 
     //счетчик символов при заполнении ИНН
     $('input#inn').characterCounter();
-
     function f(x, y) { return 28 + ((x + Math.floor(x / 8)) % 2) + 2 % x + Math.floor((1 + (1 - (y % 4 + 2) % (y % 4 + 1)) * ((y % 100 + 2) % (y % 100 + 1)) + (1 - (y % 400 + 2) % (y % 400 + 1))) / x) + Math.floor(1/x) - Math.floor(((1 - (y % 4 + 2) % (y % 4 + 1)) * ((y % 100 + 2) % (y % 100 + 1)) + (1 - (y % 400 + 2) % (y % 400 + 1)))/x); }
     let test=f(2,1900);
     console.log(test);
@@ -43,9 +78,7 @@ $(document).ready(function () {
         today.setMinutes(0);
         today.setSeconds(0);
         today.setMilliseconds(0);
-
         delta = incomingDate - today;
-
         return Math.round(delta / 1000 / 60 / 60/ 24);
     }
 
