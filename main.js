@@ -84,6 +84,8 @@ $(document).ready(function () {
             return false;
         }
     });
+    $('#f_elem_city').blur(()=>{console.log('12314',$('#f_elem_city').val())});
+
     //заполнение полей sum, deadline выбранным значениием в range-field
     //+ если значение в массиве с данными пользователя отличаются, - изменение значений в массиве соответствующих данных
     $('#range-sum').change(function (eventObject) {
@@ -127,30 +129,7 @@ $(document).ready(function () {
         })
     });
 
-    //автозаполнение для поля Город
-    $('#f_elem_city').autocomplete({
-        source: function (request, response) {
-            $.getJSON(
-                'http://gd.geobytes.com/AutoCompleteCity?callback=?&q='+request.term,
-                function (data) {
-                    response(data);
-                }
-            );
-        },
-        minLength: 3, //автозаполнение запускается только после ввода пользователем не меньше 3 символов
-        // limit: 20, //максимальное кол-во городов для выбора, которые будут выведены за раз
-        select: function (event, ui) {
-            let selectedObj = ui.item;
-            $('#f_elem_city').val(selectedObj.value);
-            return false;
-        },
-        open: function () {
-            $(this).removeClass('ui-corner-all').addClass('ui-corner-top');
-        },
-        close: function () {
-            $(this).removeClass('ui-corner-top').addClass('ui-corner-all');
-        }
-    });
+
 
     //определение совершенолетия пользователя
     function calc(){
