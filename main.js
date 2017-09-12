@@ -9,7 +9,7 @@ $(document).ready(function () {
     $('nav').load('templates/nav.html');
     $.getJSON(
       'testdata.json',
-        (data) => {
+        function (data) {
             let testData = data;
             $('#sum').val(testData.sum);
             $('#deadline').val(testData.deadline);
@@ -105,11 +105,11 @@ $(document).ready(function () {
 
     //установка доступности перехода на слудующую форму
     //для шага1
-    btnNext1 = () => {($('#deadline').val() == " " || $('#sum').val() == " ") ? $('#btn1-next').attr({"disabled":"disabled"}): $('#btn1-next').removeAttr("disabled");};
+    function btnNext1() {($('#deadline').val() == " " || $('#sum').val() == " ") ? $('#btn1-next').attr({"disabled":"disabled"}): $('#btn1-next').removeAttr("disabled");};
     $('#deadline').change(btnNext1);
     $('#sum').change(btnNext1);
     //для шага2
-    btnNext2 = () => {($('#inn').val() == " " || $('#surname').val() == " " || $('#name').val() == " "|| $('#f_elem_city').val() == " ") ? $('#btn2-next').attr({"disabled":"disabled"}): $('#btn2-next').removeAttr("disabled");};
+    function btnNext2() {($('#inn').val() == " " || $('#surname').val() == " " || $('#name').val() == " "|| $('#f_elem_city').val() == " ") ? $('#btn2-next').attr({"disabled":"disabled"}): $('#btn2-next').removeAttr("disabled");};
     $('#inn').change(btnNext2);
     $('#surname').change(btnNext2);
     $('#name').change(btnNext2);
@@ -132,7 +132,7 @@ $(document).ready(function () {
 
 
     //определение совершенолетия пользователя
-    calc = () => {
+    function calc(){
         let bDay = new Date(1900,0,0);
         let today = new Date();
         let innDate = $('#inn').val().slice(0,5);
@@ -144,7 +144,7 @@ $(document).ready(function () {
     };
 
     //Заполнение формы на шаге3
-    loadForm = () => {
+    function loadForm() {
         console.log(userForm);
         $(`
             <input disabled name="sum" value="Сумма: ${userForm.sum}">
