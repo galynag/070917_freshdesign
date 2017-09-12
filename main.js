@@ -9,7 +9,7 @@ $(document).ready(function () {
     $('nav').load('templates/nav.html');
     $.getJSON(
       'testdata.json',
-        function (data) {
+        (data) => {
             let testData = data;
             $('#sum').val(testData.sum);
             $('#deadline').val(testData.deadline);
@@ -33,7 +33,7 @@ $(document).ready(function () {
         }
     );
     //проверка данных при потере фокуса с полей формы (blur())
-    $('#sum').blur(function (eventObject) {
+    $('#sum').blur((eventObject) => {
         if (eventObject.currentTarget.value >= 1 && eventObject.currentTarget.value <= 10000) {
             if (userForm.sum != eventObject.currentTarget.value) {
                 userForm.sum = eventObject.currentTarget.value;
@@ -49,7 +49,7 @@ $(document).ready(function () {
             return false;
         }
     });
-    $('#deadline').blur(function (eventObject) {
+    $('#deadline').blur((eventObject)=> {
         if (eventObject.currentTarget.value >= 1 && eventObject.currentTarget.value <= 12) {
             if (userForm.deadline != eventObject.currentTarget.value) {
                 userForm.deadline = eventObject.currentTarget.value;
@@ -63,7 +63,7 @@ $(document).ready(function () {
             return false;
         }
     });
-    $('#inn').blur(function (eventObject) {
+    $('#inn').blur((eventObject) =>{
         console.log(eventObject);
         calc();
         if (userForm.age === 0) {
@@ -88,14 +88,14 @@ $(document).ready(function () {
 
     //заполнение полей sum, deadline выбранным значениием в range-field
     //+ если значение в массиве с данными пользователя отличаются, - изменение значений в массиве соответствующих данных
-    $('#range-sum').change(function (eventObject) {
+    $('#range-sum').change((eventObject) => {
         $('#sum').val(eventObject.currentTarget.value);
         if (userForm.sum != eventObject.currentTarget.value) {
             userForm.sum = eventObject.currentTarget.value;
         }
         btnNext1();
     });
-    $('#range-deadline').change(function (eventObject) {
+    $('#range-deadline').change((eventObject)=> {
         $('#deadline').val(eventObject.currentTarget.value);
         if (userForm.deadline != eventObject.currentTarget.value) {
             userForm.deadline = eventObject.currentTarget.value;
@@ -105,25 +105,25 @@ $(document).ready(function () {
 
     //установка доступности перехода на слудующую форму
     //для шага1
-    function btnNext1() {($('#deadline').val() == " " || $('#sum').val() == " ") ? $('#btn1-next').attr({"disabled":"disabled"}): $('#btn1-next').removeAttr("disabled");};
+    btnNext1 = () => {($('#deadline').val() == " " || $('#sum').val() == " ") ? $('#btn1-next').attr({"disabled":"disabled"}): $('#btn1-next').removeAttr("disabled");};
     $('#deadline').change(btnNext1);
     $('#sum').change(btnNext1);
     //для шага2
-    function btnNext2() {($('#inn').val() == " " || $('#surname').val() == " " || $('#name').val() == " "|| $('#f_elem_city').val() == " ") ? $('#btn2-next').attr({"disabled":"disabled"}): $('#btn2-next').removeAttr("disabled");};
+    btnNext2 = () => {($('#inn').val() == " " || $('#surname').val() == " " || $('#name').val() == " "|| $('#f_elem_city').val() == " ") ? $('#btn2-next').attr({"disabled":"disabled"}): $('#btn2-next').removeAttr("disabled");};
     $('#inn').change(btnNext2);
     $('#surname').change(btnNext2);
     $('#name').change(btnNext2);
     $('#f_elem_city').change(btnNext2);
 
     //отправка формы
-    $('#btn-submit').click(function() {
+    $('#btn-submit').click(() => {
         $.ajax({
             type: "POST",
             url: ('form.php'),
-            success: function () {
+            success: () => {
                 alert('Форма отправлена.');
             },
-            error: function () {
+            error: () => {
                 alert('Ошибка. Форма НЕ отправлена.');
             },
         })
@@ -132,7 +132,7 @@ $(document).ready(function () {
 
 
     //определение совершенолетия пользователя
-    function calc(){
+    calc = () => {
         let bDay = new Date(1900,0,0);
         let today = new Date();
         let innDate = $('#inn').val().slice(0,5);
@@ -144,7 +144,7 @@ $(document).ready(function () {
     };
 
     //Заполнение формы на шаге3
-    function loadForm() {
+    loadForm = () => {
         console.log(userForm);
         $(`
             <input disabled name="sum" value="Сумма: ${userForm.sum}">
