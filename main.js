@@ -105,11 +105,11 @@ $(document).ready(function () {
 
     //установка доступности перехода на слудующую форму
     //для шага1
-    function btnNext1() {($('#deadline').val() == " " || $('#sum').val() == " ") ? $('#btn1-next').attr({"disabled":"disabled"}): $('#btn1-next').removeAttr("disabled");};
+    function btnNext1() {($('#deadline').val() == "" || $('#deadline').val() == "0" || $('#sum').val() == "") ? $('#btn1-next').attr({"disabled":"disabled"}): $('#btn1-next').removeAttr("disabled");};
     $('#deadline').change(btnNext1);
     $('#sum').change(btnNext1);
     //для шага2
-    function btnNext2() {($('#inn').val() == " " || $('#surname').val() == " " || $('#name').val() == " "|| $('#f_elem_city').val() == " ") ? $('#btn2-next').attr({"disabled":"disabled"}): $('#btn2-next').removeAttr("disabled");};
+    function btnNext2() {($('#inn').val() == "" || $('#surname').val() == "" || $('#name').val() == ""|| $('#f_elem_city').val() == "") ? $('#btn2-next').attr({"disabled":"disabled"}): $('#btn2-next').removeAttr("disabled");};
     $('#inn').change(btnNext2);
     $('#surname').change(btnNext2);
     $('#name').change(btnNext2);
