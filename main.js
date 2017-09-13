@@ -109,7 +109,7 @@ $(document).ready(function () {
     $('#deadline').change(btnNext1);
     $('#sum').change(btnNext1);
     //для шага2
-    function btnNext2() {($('#inn').val() == "" || $('#surname').val() == "" || $('#name').val() == ""|| $('#f_elem_city').val() == "") ? $('#btn2-next').attr({"disabled":"disabled"}): $('#btn2-next').removeAttr("disabled");};
+    function btnNext2() {($('#inn').val() == "" || $('#inn').val() == "0" || $('#surname').val() == "" || $('#name').val() == ""|| $('#f_elem_city').val() == "") ? $('#btn2-next').attr({"disabled":"disabled"}): $('#btn2-next').removeAttr("disabled");};
     $('#inn').change(btnNext2);
     $('#surname').change(btnNext2);
     $('#name').change(btnNext2);
